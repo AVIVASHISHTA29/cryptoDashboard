@@ -1,13 +1,94 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;800&display=swap");
+
+:root {
+  --blue: #3a80e9;
+  --white: #ffffff;
+  --black: #111;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* var(--black) == #111 */
+  background-color: var(--black);
+  color: var(--white);
+}
+
+/* for headings */
+h1 {
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* for sub-headings */
+h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+h3 {
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+h4 {
+  font-size: 1.875rem;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+h6 {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/* Width */
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--blue);
+  border-radius: 1rem;
 }
