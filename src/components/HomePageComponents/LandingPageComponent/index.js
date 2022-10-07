@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 
 function LandingPageComponent() {
-  return <div>LandingPageComponent</div>;
+  return <div className="wrapper"></div>;
 }
 
 export default LandingPageComponent;

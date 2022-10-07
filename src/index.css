@@ -4,6 +4,11 @@
   --blue: #3a80e9;
   --white: #ffffff;
   --black: #111;
+  --grey: #888;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -18,20 +23,20 @@ body {
 
 /* for headings */
 h1 {
-  font-size: 3.75rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--white);
 }
 
 /* for sub-headings */
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 500;
   color: var(--white);
 }
 
 h3 {
-  font-size: 2.25rem;
+  font-size: 1.25rem;
   font-weight: 500;
   color: var(--white);
 }
