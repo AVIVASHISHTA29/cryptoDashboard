@@ -9,7 +9,6 @@ function Header() {
       <h1 className="heading">
         CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
       </h1>
-
       <div className="links-flex">
         <a href="/">
           <p className="links">Home</p>
