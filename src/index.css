@@ -9,6 +9,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -19,46 +20,6 @@ body {
   /* var(--black) == #111 */
   background-color: var(--black);
   color: var(--white);
-}
-
-/* for headings */
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--white);
-}
-
-/* for sub-headings */
-h2 {
-  font-size: 2rem;
-  font-weight: 500;
-  color: var(--white);
-}
-
-h3 {
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--white);
-}
-
-h4 {
-  font-size: 1.875rem;
-  font-weight: 500;
-}
-
-h5 {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-h6 {
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-
-p {
-  font-size: 1rem;
-  font-weight: 400;
 }
 
 a {

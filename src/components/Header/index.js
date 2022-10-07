@@ -1,3 +1,4 @@
+import Drawer from "./Drawer";
 import React from "react";
 import Button from "../Button";
 import "./styles.css";
@@ -8,6 +9,7 @@ function Header() {
       <h1 className="heading">
         CryptoTracker<span style={{ color: "var(--blue)" }}>.</span>
       </h1>
+
       <div className="links-flex">
         <a href="/">
           <p className="links">Home</p>
@@ -23,6 +25,9 @@ function Header() {
             <Button text="Dashboard" />
           </p>
         </a>
+      </div>
+      <div className="menu-div">
+        <Drawer />
       </div>
     </div>
   );
