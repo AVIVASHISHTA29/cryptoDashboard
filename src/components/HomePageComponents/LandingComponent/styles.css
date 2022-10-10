@@ -4,7 +4,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  height: 200vh;
 }
 
 .big-heading {
@@ -44,19 +43,69 @@
 }
 
 .phone {
-  width: 350px;
+  width: 55%;
   display: block;
   margin-left: auto;
   margin-right: auto;
   position: absolute;
   top: 0;
   right: 0;
+  min-width: 270px;
 }
 
 .gradient {
   position: absolute;
-  width: 300px;
-  height: 600px;
-  top: 6rem;
+  width: 55%;
+  object-fit: contain;
+  top: 8%;
   right: -2rem;
+  min-width: 250px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .big-heading {
+    font-size: 5rem;
+  }
+
+  .img-box {
+    width: 50%;
+  }
+
+  .gradient {
+    top: 6%;
+    min-width: 200px;
+  }
+
+  .phone {
+    min-width: 200px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .flex-wrapper {
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-box {
+    width: 100%;
+  }
+
+  .gradient {
+    top: 6rem;
+    min-width: 200px;
+    margin-top: 0rem;
+    padding-bottom: 3rem;
+  }
+
+  .button-div {
+    justify-content: center;
+  }
+
+  .big-heading {
+    font-size: 3.5rem;
+  }
 }

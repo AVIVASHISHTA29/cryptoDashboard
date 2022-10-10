@@ -5,6 +5,8 @@
   width: fit-content;
   border-radius: 3rem;
   padding: 0.75rem 2rem;
+  min-width: 9rem;
+  text-align: center;
 }
 
 .outline-button-wrapper p {
@@ -17,4 +19,10 @@
   background-color: var(--blue);
   transition: all 0.3s;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  .outline-button-wrapper p {
+    font-size: 80%;
+  }
 }
