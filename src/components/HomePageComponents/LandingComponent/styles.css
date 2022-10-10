@@ -82,6 +82,11 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .heading-container {
+    width: 100%;
+    text-align: center;
+  }
+
   .flex-wrapper {
     flex-direction: column;
     padding-left: 1.5rem;
@@ -92,6 +97,7 @@
 
   .img-box {
     width: 100%;
+    right: 25%;
   }
 
   .gradient {
@@ -103,6 +109,8 @@
 
   .button-div {
     justify-content: center;
+    padding: 1rem;
+    padding-bottom: 0rem;
   }
 
   .big-heading {
