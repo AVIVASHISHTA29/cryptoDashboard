@@ -1,12 +1,12 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import LandingPageComponent from "../components/HomePageComponents/LandingPageComponent";
+import LandingComponent from "../components/HomePageComponents/LandingComponent";
 function Home() {
   return (
     <div>
       <Header />
-      <LandingPageComponent />
+      <LandingComponent />
       <Footer />
     </div>
   );
