@@ -19,7 +19,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* var(--black) == #111 */
   background-color: var(--black);
-  color: var(--white);
 }
 
 a {
@@ -57,4 +56,14 @@ img {
 ::-webkit-scrollbar-thumb {
   background: var(--blue);
   border-radius: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  color: var(--white);
 }

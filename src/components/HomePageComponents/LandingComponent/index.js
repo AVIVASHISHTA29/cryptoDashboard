@@ -5,6 +5,8 @@ import gradient from "../../../assets/gradient.png";
 import { motion } from "framer-motion";
 import Button from "../../Button";
 import OutlinedButton from "../../OutlinedButton";
+import { RWebShare } from "react-web-share";
+
 function LandingComponent() {
   return (
     <div className="flex-wrapper">
@@ -27,7 +29,16 @@ function LandingComponent() {
           <a href="/dashboard">
             <Button text={"Dashboard"} />
           </a>
-          <OutlinedButton text={"Share"} />
+          <RWebShare
+            data={{
+              text: "Checkout my crypto tracker made using React!",
+              url: "https://my-cryptotracker.com",
+              title: "Crypto Tracker",
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <OutlinedButton text={"Share"} />
+          </RWebShare>
         </div>
       </div>
 
