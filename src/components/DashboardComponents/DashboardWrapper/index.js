@@ -5,9 +5,19 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Grid from "../Grid";
 
 function DashboardWrapper({ data }) {
   const [value, setValue] = React.useState(0);
+
+  const style = {
+    color: "white",
+    width: "50vw",
+    fontSize: "1.2rem",
+    fontWeight: 600,
+    fontFamily: "Inter",
+    textTransform: "capitalize",
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -47,31 +57,13 @@ function DashboardWrapper({ data }) {
         onChange={handleChange}
         aria-label="basic tabs example"
       >
-        <Tab
-          label="Grid"
-          sx={{
-            color: "white",
-            width: "50vw",
-            fontSize: "1.2rem",
-            fontWeight: 600,
-            fontFamily: "Inter",
-            textTransform: "capitalize",
-          }}
-        />
-        <Tab
-          label="List"
-          sx={{
-            color: "white",
-            width: "50vw",
-            fontSize: "1.2rem",
-            fontWeight: 600,
-            fontFamily: "Inter",
-            textTransform: "capitalize",
-          }}
-        />
+        <Tab label="Grid" sx={style} />
+        <Tab label="List" sx={style} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        grid
+        {data.map((coin, i) => (
+          <Grid coin={coin} key={i} />
+        ))}
       </TabPanel>
       <TabPanel value={value} index={1}>
         list

@@ -43,7 +43,7 @@
 }
 
 .phone {
-  width: 55%;
+  width: 65%;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -57,9 +57,9 @@
   position: absolute;
   width: 55%;
   object-fit: contain;
-  top: 8rem;
-  right: -2rem;
-  min-width: 250px;
+  top: 7rem;
+  right: 0rem;
+  min-width: 200px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -73,7 +73,7 @@
 
   .gradient {
     top: 6rem;
-    min-width: 200px;
+    min-width: 150px;
   }
 
   .phone {
