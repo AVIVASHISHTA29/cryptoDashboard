@@ -5,9 +5,10 @@
   border-radius: 1rem;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   padding: 2rem;
+  cursor: pointer;
 }
 
 .logo-div {
@@ -34,4 +35,50 @@
   font-size: 0.8rem;
   opacity: 0.8;
   margin-top: 0.2rem !important;
+}
+
+.chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--green);
+  border-radius: 2rem;
+  margin: 1.5rem 0rem;
+  font-weight: 600;
+}
+
+.chip p {
+  margin: 0;
+}
+
+.chip-flex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trending-icon {
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  padding: 0.35rem;
+  color: var(--green);
+  font-size: 2.5rem;
+}
+
+.chip:hover,
+.trending-icon:hover {
+  background-color: var(--green);
+  color: var(--white) !important;
+  transition: all 0.3s;
+}
+
+.red {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.red:hover {
+  background-color: var(--red);
+  color: var(--white) !important;
+  border-color: var(--red);
+  transition: all 0.3s;
 }
