@@ -12,6 +12,7 @@ function Dashboard() {
   useEffect(() => {
     axios.get(API_URL).then((response) => {
       if (response.data) {
+        console.log(response.data);
         setData(response.data);
       } else {
         console.log("error");

@@ -29,14 +29,14 @@ function DashboardWrapper({ data }) {
           <Tab label="Grid" sx={style} />
           <Tab label="List" sx={style} />
         </TabList>
-        <TabPanel value={value} index={0}>
-          {data.map((coin, i) => (
-            <Grid coin={coin} key={i} />
-          ))}
+        <TabPanel value={0}>
+          <div className="grid-flex">
+            {data.map((coin, i) => (
+              <Grid coin={coin} key={i} />
+            ))}
+          </div>
         </TabPanel>
-        <TabPanel value={value} index={1}>
-          list
-        </TabPanel>
+        <TabPanel value={1}>list</TabPanel>
       </TabContext>
     </div>
   );
