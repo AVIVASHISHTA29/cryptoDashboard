@@ -61,7 +61,7 @@
   border-radius: 50%;
   padding: 0.35rem;
   color: var(--green);
-  font-size: 2.5rem;
+  font-size: 2.5rem !important;
 }
 
 .chip:hover,
@@ -81,4 +81,19 @@
   color: var(--white) !important;
   border-color: var(--red);
   transition: all 0.3s;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--green);
+  margin-top: 0;
+}
+
+.price-red {
+  color: var(--red);
+}
+
+.sub-heading {
+  font-weight: 600;
 }
