@@ -97,3 +97,17 @@
 .sub-heading {
   font-weight: 600;
 }
+
+@media only screen and (max-width: 600px) {
+  .coin-box {
+    width: 100%;
+    align-items: center;
+  }
+  .logo-div {
+    justify-content: center;
+    margin-left: -2rem;
+  }
+  .logo {
+    max-width: 50px;
+  }
+}
