@@ -76,3 +76,8 @@ p {
     font-size: 80%;
   }
 }
+
+td {
+  text-align: left !important;
+  width: 18%;
+}
