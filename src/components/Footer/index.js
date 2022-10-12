@@ -5,3 +5,8 @@ function Footer() {
 }
 
 export default Footer;
+
+//todo :  add footer to every page
+
+//todo:light mode dark mode
+//todo: mouse follower.
