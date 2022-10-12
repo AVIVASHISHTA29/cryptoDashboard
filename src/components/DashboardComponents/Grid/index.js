@@ -3,7 +3,7 @@ import "./styles.css";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 
-//todo: responsive + graphs + data points
+//todo: responsive + graphs + data points + pagination
 
 function Grid({ coin }) {
   return (
