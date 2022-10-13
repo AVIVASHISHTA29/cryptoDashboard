@@ -9,7 +9,9 @@ function CoinPage() {
   console.log(searchParams);
 
   const [data, setData] = useState();
+  const [prices, setPrices] = useState();
   const [loading, setLoading] = useState(true);
+  const [loadingChart, setLoadingChart] = useState(true);
 
   useEffect(() => {
     if (searchParams) {
@@ -26,6 +28,20 @@ function CoinPage() {
     }
   }, [searchParams]);
 
+  useEffect(() => {
+    if (data) {
+      const API_URL = `https://api.coingecko.com/api/v3/coins/${data.id}/market_chart?vs_currency=usd&days=30&interval=daily`;
+      axios.get(API_URL).then((response) => {
+        if (response.data) {
+          setPrices(response.data.prices);
+          setLoadingChart(false);
+        } else {
+          console.log("Could not get prices");
+        }
+      });
+    }
+  }, [data]);
+
   return (
     <>
       {loading ? (
@@ -34,6 +50,12 @@ function CoinPage() {
         <>
           <Header />
           <p>got the data</p>
+          {prices?.map((item, i) => (
+            <>
+              <p>{i}</p>
+              <p>{item[1]}</p>
+            </>
+          ))}
         </>
       )}
     </>

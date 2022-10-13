@@ -10,3 +10,4 @@ export default Footer;
 
 //todo:light mode dark mode
 //todo: mouse follower.
+//todo: compare page
