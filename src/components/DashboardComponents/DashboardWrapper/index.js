@@ -47,16 +47,20 @@ function DashboardWrapper({ data }) {
           </TabList>
           <TabPanel value={0}>
             <div className="grid-flex">
-              {data.map((coin, i) => (
-                <Grid coin={coin} key={i} />
-              ))}
+              {data.length == 0 ? (
+                <p>No Crypto Currencies Found</p>
+              ) : (
+                data.map((coin, i) => <Grid coin={coin} key={i} />)
+              )}
             </div>
           </TabPanel>
           <TabPanel value={1}>
             <table className="list-table">
-              {data.map((coin, i) => (
-                <List coin={coin} key={i} />
-              ))}
+              {data.length == 0 ? (
+                <p>No Crypto Currencies Found</p>
+              ) : (
+                data.map((coin, i) => <List coin={coin} key={i} />)
+              )}
             </table>
           </TabPanel>
         </TabContext>

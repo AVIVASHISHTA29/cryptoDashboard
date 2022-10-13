@@ -7,8 +7,8 @@ import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 
 function Grid({ coin }) {
   return (
-    <a href={`/coin?${coin.id}`}>
-      <div className="coin-box">
+    <div className="coin-box">
+      <a href={`/coin?${coin.id}`}>
         <div className="logo-div">
           <img src={coin.image} className="logo" />
           <div className="coin-info">
@@ -60,8 +60,8 @@ function Grid({ coin }) {
             {coin.market_cap.toLocaleString()}
           </p>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   );
 }
 
