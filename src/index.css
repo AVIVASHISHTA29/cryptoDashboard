@@ -71,13 +71,39 @@ p {
   color: var(--white);
 }
 
+td {
+  text-align: left !important;
+  width: 18%;
+}
+
+.data-list-div {
+  background-color: var(--darkgrey);
+  margin: 1rem 3rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.data-list-div h2 {
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+}
+
+.data-list-div a {
+  text-decoration: underline;
+}
+
+/* .data-list-div a:hover {
+  color: var(--blue);
+} */
+
 @media only screen and (max-width: 800px) {
   p {
     font-size: 80%;
   }
-}
 
-td {
-  text-align: left !important;
-  width: 18%;
+  .data-list-div {
+    margin: 0.8rem 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
 }

@@ -5,6 +5,7 @@ import OutlinedButton from "../components/OutlinedButton";
 import LineChart from "../components/DashboardComponents/LineChart";
 import Header from "../components/Header";
 import Loader from "../components/Loader";
+import List from "../components/DashboardComponents/List";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
@@ -12,6 +13,8 @@ function CoinPage() {
 
   const [data, setData] = useState();
   const [dates, setDates] = useState([]);
+
+  const [coin, setCoin] = useState({});
 
   const options = {
     plugins: {
@@ -74,6 +77,8 @@ function CoinPage() {
     }
     setData(response_data.data);
 
+    console.log(response_data.data);
+
     const API_URL2 = `https://api.coingecko.com/api/v3/coins/${response_data.data.id}/market_chart?vs_currency=usd&days=30&interval=daily`;
 
     const prices_data = await axios.get(API_URL2, {
@@ -106,6 +111,19 @@ function CoinPage() {
 
     setLoadingChart(false);
     setLoading(false);
+
+    setCoin({
+      id: response_data.data.id,
+      name: response_data.data.name,
+      image: response_data.data.image.large,
+      symbol: response_data.data.symbol,
+      market_cap: response_data.data.market_data.market_cap.usd,
+      price_change_percentage_24h:
+        response_data.data.market_data.price_change_24h,
+      current_price: response_data.data.market_data.current_price.usd,
+      total_volume: response_data.data.market_data.total_volume.usd,
+      no_link: true,
+    });
   };
 
   return (
@@ -115,7 +133,17 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <LineChart chartData={chartData} options={options} />
+          <div className="data-list-div">
+            <List coin={coin} />
+          </div>
+          <div className="data-list-div">
+            <h2>Price Change in Last 30 days</h2>
+            <LineChart chartData={chartData} options={options} />
+          </div>
+          <div className="data-list-div">
+            <h2>{data.name}</h2>
+            <p dangerouslySetInnerHTML={{ __html: data.description.en }} />
+          </div>
         </>
       )}
     </>

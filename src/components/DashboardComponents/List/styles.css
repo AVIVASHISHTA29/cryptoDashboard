@@ -19,6 +19,9 @@
   font-size: 1.2rem;
   color: var(--white);
 }
+.td-name {
+  margin-bottom: 0;
+}
 
 .image-td {
   width: fit-content;
