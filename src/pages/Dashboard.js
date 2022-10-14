@@ -24,7 +24,7 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    axios.get(API_URL).then((response) => {
+    axios.get(API_URL, { crossDomain: true }).then((response) => {
       if (response.data) {
         console.log(response.data);
         setData(response.data);
