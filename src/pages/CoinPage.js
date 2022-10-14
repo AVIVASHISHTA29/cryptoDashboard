@@ -30,7 +30,7 @@ function CoinPage() {
     var arr = new Array();
     var dt = new Date(start);
     while (dt <= end) {
-      arr.push(new Date(dt).getDate() + "/" + new Date(dt).getUTCMonth());
+      arr.push(new Date(dt).getDate() + "/" + (new Date(dt).getUTCMonth() + 1));
       dt.setDate(dt.getDate() + 1);
     }
     return arr;
@@ -43,35 +43,31 @@ function CoinPage() {
         .get(API_URL.slice(0, -1), { crossDomain: true })
         .then((response) => {
           if (response.data) {
-            console.log(response.data);
             setData(response.data);
-
-            if (response.data) {
-              const API_URL2 = `https://api.coingecko.com/api/v3/coins/${response.data.id}/market_chart?vs_currency=usd&days=90&interval=daily`;
-              axios.get(API_URL2, { crossDomain: true }).then((response2) => {
-                if (response2.data) {
-                  setPrices(response2.data.prices);
-                  setLoadingChart(false);
-                  setLoading(false);
-                  setChartData({
-                    labels: getDateArray(priorDate, today),
-                    datasets: [
-                      {
-                        data: prices?.map((data) => data[1]),
-                        borderWidth: 2,
-                        fill: false,
-                        tension: 0.25,
-                        backgroundColor: "white",
-                        borderColor: "white",
-                        pointRadius: 0,
-                      },
-                    ],
-                  });
-                } else {
-                  console.log("Could not get prices");
-                }
-              });
-            }
+            const API_URL2 = `https://api.coingecko.com/api/v3/coins/${response.data.id}/market_chart?vs_currency=usd&days=90&interval=daily`;
+            axios.get(API_URL2, { crossDomain: true }).then((response2) => {
+              if (response2.data) {
+                setPrices(response2.data.prices);
+                setLoadingChart(false);
+                setLoading(false);
+                setChartData({
+                  labels: getDateArray(priorDate, today),
+                  datasets: [
+                    {
+                      data: prices?.map((data) => data[1]),
+                      borderWidth: 2,
+                      fill: false,
+                      tension: 0.25,
+                      backgroundColor: "white",
+                      borderColor: "white",
+                      pointRadius: 0,
+                    },
+                  ],
+                });
+              } else {
+                console.log("Could not get prices");
+              }
+            });
           } else {
             console.log("Could not get data");
           }
