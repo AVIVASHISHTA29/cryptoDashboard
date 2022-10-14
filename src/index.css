@@ -96,6 +96,13 @@ td {
   color: var(--blue);
 } */
 
+.select {
+  color: var(--white) !important;
+  margin: 0.5rem;
+  padding: 0rem;
+  border: 1px solid var(--white);
+}
+
 @media only screen and (max-width: 800px) {
   p {
     font-size: 80%;
