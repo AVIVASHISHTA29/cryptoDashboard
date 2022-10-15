@@ -182,6 +182,16 @@ function CoinPage() {
                   label="Days"
                   onChange={handleChange}
                   className="select-days"
+                  sx={{
+                    height: "2.5rem",
+                    color: "white",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "white",
+                    },
+                    "& .MuiSvgIcon-root": {
+                      color: "white",
+                    },
+                  }}
                 >
                   <MenuItem value={7}>7</MenuItem>
                   <MenuItem value={30}>30</MenuItem>
