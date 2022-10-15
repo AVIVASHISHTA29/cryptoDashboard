@@ -42,7 +42,9 @@ function List({ coin }) {
 
         <td className="coin-info ">
           <p className="symbol td-text">{coin.symbol}-USD</p>
-          <p className="name td-text">{coin.name}</p>
+          <p className="name td-text" style={{ marginBottom: 0 }}>
+            {coin.name}
+          </p>
         </td>
         {coin.price_change_percentage_24h > 0 ? (
           <td className="chip-flex td-chip-flex ">

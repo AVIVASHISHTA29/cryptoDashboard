@@ -71,13 +71,50 @@ p {
   color: var(--white);
 }
 
+td {
+  text-align: left !important;
+  width: 18%;
+}
+
+.coin-page-div {
+  padding: 1rem;
+  margin: 1rem 3rem;
+  background-color: var(--darkgrey);
+  border-radius: 1rem;
+}
+
+.description a {
+  text-decoration: underline;
+}
+
+.description h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.description a:hover {
+  color: var(--blue);
+  transition: all 0.3s;
+}
+
+.select-days {
+  color: var(--white) !important;
+  margin: 1rem;
+  border-color: var(--white) !important;
+}
+
 @media only screen and (max-width: 800px) {
   p {
     font-size: 80%;
   }
-}
+  .coin-page-div {
+    padding: 0.8rem;
+    margin: 0.8rem 1.5rem;
+    border-radius: 0.8rem;
+  }
 
-td {
-  text-align: left !important;
-  width: 18%;
+  .description h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+  }
 }
