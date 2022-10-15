@@ -184,12 +184,12 @@ function CoinPage() {
                   className="select-days"
                   sx={{
                     height: "2.5rem",
-                    color: "white",
+                    color: "var(--white)",
                     "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "white",
+                      borderColor: "var(--white)",
                     },
                     "& .MuiSvgIcon-root": {
-                      color: "white",
+                      color: "var(--white)",
                     },
                   }}
                 >
