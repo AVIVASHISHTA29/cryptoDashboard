@@ -26,6 +26,11 @@ function CoinPage() {
         display: false,
       },
     },
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
   };
 
   const [chartData, setChartData] = useState({
@@ -36,8 +41,8 @@ function CoinPage() {
         borderWidth: 2,
         fill: false,
         tension: 0.25,
-        backgroundColor: "white",
-        borderColor: "white",
+        backgroundColor: "#3a80e9",
+        borderColor: "#3a80e9",
         pointRadius: 0,
       },
     ],
@@ -103,8 +108,8 @@ function CoinPage() {
           borderWidth: 2,
           fill: false,
           tension: 0.25,
-          backgroundColor: "white",
-          borderColor: "white",
+          backgroundColor: "#111",
+          borderColor: "#3a80e9",
           pointRadius: 0,
         },
       ],

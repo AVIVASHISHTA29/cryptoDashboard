@@ -90,6 +90,7 @@ td {
 .description h2 {
   margin-top: 0;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 }
 
 .description a:hover {
@@ -116,5 +117,8 @@ td {
   .description h2 {
     margin-top: 0;
     margin-bottom: 0.8rem;
+  }
+  .select-days {
+    max-width: 110px;
   }
 }
