@@ -4,7 +4,14 @@ import "./styles.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 
-function SelectCryptos({ crypto1, crypto2, setCrypto1, setCrypto2 }) {
+function SelectCryptos({
+  crypto1,
+  crypto2,
+  setCrypto1,
+  setCrypto2,
+  days,
+  setDays,
+}) {
   const API_URL =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
 
@@ -28,6 +35,9 @@ function SelectCryptos({ crypto1, crypto2, setCrypto1, setCrypto2 }) {
   const handleChange2 = async (event) => {
     setCrypto2(event.target.value);
     console.log("crypto222", crypto2);
+  };
+  const handleChange3 = async (event) => {
+    setDays(event.target.value);
   };
 
   return (
@@ -77,6 +87,27 @@ function SelectCryptos({ crypto1, crypto2, setCrypto1, setCrypto2 }) {
               {item.name}
             </MenuItem>
           ))}
+      </Select>
+      <Select
+        value={days}
+        label="Days"
+        onChange={handleChange3}
+        className="select-days"
+        sx={{
+          height: "2.5rem",
+          color: "var(--white)",
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: "var(--white)",
+          },
+          "& .MuiSvgIcon-root": {
+            color: "var(--white)",
+          },
+        }}
+      >
+        <MenuItem value={7}>7</MenuItem>
+        <MenuItem value={30}>30</MenuItem>
+        <MenuItem value={60}>60</MenuItem>
+        <MenuItem value={90}>90</MenuItem>
       </Select>
     </div>
   );

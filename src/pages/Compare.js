@@ -6,7 +6,7 @@ import Header from "../components/Header";
 function Compare() {
   const [crypto1, setCrypto1] = useState("");
   const [crypto2, setCrypto2] = useState("");
-
+  const [days, setDays] = useState(30);
   return (
     <div>
       <Header />
@@ -15,8 +15,10 @@ function Compare() {
         crypto2={crypto2}
         setCrypto1={setCrypto1}
         setCrypto2={setCrypto2}
+        days={days}
+        setDays={setDays}
       />
-      <CompareGraph crypto1={crypto1} crypto2={crypto2} />
+      <CompareGraph crypto1={crypto1} crypto2={crypto2} days={days} />
     </div>
   );
 }
