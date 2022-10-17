@@ -26,6 +26,10 @@ function CoinPage() {
         display: false,
       },
     },
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
   };
 
   const [chartData, setChartData] = useState({
@@ -179,7 +183,6 @@ function CoinPage() {
               <span>
                 <Select
                   value={days}
-                  label="Days"
                   onChange={handleChange}
                   className="select-days"
                   sx={{
