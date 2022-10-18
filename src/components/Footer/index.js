@@ -6,8 +6,11 @@ function Footer() {
 
 export default Footer;
 
-//todo :  add footer to every page
-
-//todo:light mode dark mode
-//todo: mouse follower.
-//todo: compare page
+//todo:Add footer to every page.
+//todo:Light mode dark mode.
+//todo:Mouse follower.
+//todo:Pagination + add this component to the home page.
+//todo:Home Page more components.
+//todo: graphs not only of prices but marketcap and volume as well
+//todo :grid and list hover animation
+//todo:news api for crypto prod

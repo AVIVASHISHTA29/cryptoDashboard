@@ -3,7 +3,6 @@ import "./styles.css";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import { motion } from "framer-motion";
-//todo:  graphs  + pagination + add this component to the home page
 
 function Grid({ coin, delay }) {
   return (
