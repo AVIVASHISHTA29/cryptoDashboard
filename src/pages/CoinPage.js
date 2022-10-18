@@ -1,18 +1,16 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import OutlinedButton from "../components/OutlinedButton";
 import LineChart from "../components/DashboardComponents/LineChart";
 import Header from "../components/Header";
 import Loader from "../components/Loader";
-import List from "../components/DashboardComponents/List";
 import CoinPageList from "../components/CoinPageComponents/CoinPageList";
 import CoinPageDesc from "../components/CoinPageComponents/CoinPageDesc";
 import SelectDays from "../components/CoinPageComponents/SelectDays";
 import { getDaysArray } from "../functions/getDaysArray";
 import { getPrices } from "../functions/getPrices";
 import { getPriorDate } from "../functions/getPriorDate";
-import { COIN_GECKO_URL } from "../constants";
+import { getCoinData } from "../functions/getCoinData";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
@@ -60,42 +58,16 @@ function CoinPage() {
   }, [searchParams]);
 
   const getData = async () => {
-    const API_URL = COIN_GECKO_URL + `${searchParams}`;
-
-    const response_data = await axios.get(API_URL.slice(0, -1), {
-      crossDomain: true,
-    });
-
-    if (!response_data) {
-      console.log("No data");
-      return;
-    }
-    setData(response_data.data);
-
-    console.log("ersponse data>>>", response_data.data);
-
-    const API_URL2 =
-      COIN_GECKO_URL +
-      `${response_data.data.id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
-
-    const prices_data = await axios.get(API_URL2, {
-      crossDomain: true,
-    });
-
-    if (!prices_data) {
-      console.log("No price data");
-      return;
-    }
-
-    setPrices(prices_data.data.prices);
-
-    var dates_2 = getDaysArray(priorDate, today);
-
+    const response_data = await getCoinData(searchParams);
+    setData(response_data);
+    const prices_data = await getPrices(response_data.id, days);
+    setPrices(prices_data);
+    var dates = getDaysArray(priorDate, today);
     setChartData({
-      labels: dates_2,
+      labels: dates,
       datasets: [
         {
-          data: prices_data?.data?.prices?.map((data) => data[1]),
+          data: prices_data?.map((data) => data[1]),
           borderWidth: 2,
           fill: false,
           tension: 0.25,
@@ -105,20 +77,18 @@ function CoinPage() {
         },
       ],
     });
-
     setLoadingChart(false);
     setLoading(false);
-
     setCoin({
-      id: response_data.data.id,
-      name: response_data.data.name,
-      symbol: response_data.data.symbol,
-      image: response_data.data.image.large,
+      id: response_data.id,
+      name: response_data.name,
+      symbol: response_data.symbol,
+      image: response_data.image.large,
       price_change_percentage_24h:
-        response_data.data.market_data.price_change_percentage_24h,
-      total_volume: response_data.data.market_data.total_volume.usd,
-      current_price: response_data.data.market_data.current_price.usd,
-      market_cap: response_data.data.market_data.market_cap.usd,
+        response_data.market_data.price_change_percentage_24h,
+      total_volume: response_data.market_data.total_volume.usd,
+      current_price: response_data.market_data.current_price.usd,
+      market_cap: response_data.market_data.market_cap.usd,
     });
   };
 
