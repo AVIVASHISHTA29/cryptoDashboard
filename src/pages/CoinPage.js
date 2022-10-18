@@ -58,7 +58,7 @@ function CoinPage() {
   }, [searchParams]);
 
   const getData = async () => {
-    const response_data = await getCoinData(searchParams);
+    const response_data = await getCoinData(searchParams, true);
     setData(response_data);
     const prices_data = await getPrices(response_data.id, days);
     setPrices(prices_data);
