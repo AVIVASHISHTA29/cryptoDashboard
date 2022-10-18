@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { getDaysArray } from "../../../functions/getDaysArray";
 import LineChart from "../../DashboardComponents/LineChart";
 import Loader from "../../Loader";
 import "./styles.css";
@@ -9,17 +10,6 @@ function CompareGraph({ crypto1, crypto2, days }) {
 
   const today = new Date();
   const priorDate = new Date(new Date().setDate(today.getDate() - days));
-
-  var getDaysArray = function (starting, ending) {
-    for (
-      var a = [], d = new Date(starting);
-      d <= new Date(ending);
-      d.setDate(d.getDate() + 1)
-    ) {
-      a.push(new Date(d).getDate() + "/" + (new Date(d).getUTCMonth() + 1));
-    }
-    return a;
-  };
 
   const options = {
     plugins: {

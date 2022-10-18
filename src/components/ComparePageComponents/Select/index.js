@@ -18,6 +18,11 @@ function SelectComponent({ value, handleChange, data, filter }) {
           "& .MuiSvgIcon-root": {
             color: "var(--white)",
           },
+          "&:hover": {
+            "&& fieldset": {
+              borderColor: "#3a80e9",
+            },
+          },
         }}
       >
         {data

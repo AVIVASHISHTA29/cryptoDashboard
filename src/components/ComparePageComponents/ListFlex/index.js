@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import List from "../../DashboardComponents/List";
+import CoinPageList from "../../CoinPageComponents/CoinPageList";
 import Loader from "../../Loader";
 import "./styles.css";
 
@@ -70,12 +70,8 @@ function ListFlex({ crypto1, crypto2, setCrypto1Desc, setCrypto2Desc }) {
     <Loader />
   ) : (
     <div>
-      <div className="coin-page-div">
-        <List coin={coin1} />
-      </div>
-      <div className="coin-page-div">
-        <List coin={coin2} />
-      </div>
+      <CoinPageList coin={coin1} />
+      <CoinPageList coin={coin2} />
     </div>
   );
 }

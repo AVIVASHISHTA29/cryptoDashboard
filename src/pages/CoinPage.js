@@ -6,8 +6,12 @@ import LineChart from "../components/DashboardComponents/LineChart";
 import Header from "../components/Header";
 import Loader from "../components/Loader";
 import List from "../components/DashboardComponents/List";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import CoinPageList from "../components/CoinPageComponents/CoinPageList";
+import CoinPageDesc from "../components/CoinPageComponents/CoinPageDesc";
+import SelectDays from "../components/CoinPageComponents/SelectDays";
+import { getDaysArray } from "../functions/getDaysArray";
+import { getPrices } from "../functions/getPrices";
+import { getPriorDate } from "../functions/getPriorDate";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
@@ -41,7 +45,7 @@ function CoinPage() {
         borderWidth: 2,
         fill: false,
         tension: 0.25,
-        backgroundColor: "#3a80e9",
+        backgroundColor: "#111",
         borderColor: "#3a80e9",
         pointRadius: 0,
       },
@@ -52,17 +56,6 @@ function CoinPage() {
 
   const today = new Date();
   const priorDate = new Date(new Date().setDate(today.getDate() - days));
-
-  var getDaysArray = function (starting, ending) {
-    for (
-      var a = [], d = new Date(starting);
-      d <= new Date(ending);
-      d.setDate(d.getDate() + 1)
-    ) {
-      a.push(new Date(d).getDate() + "/" + (new Date(d).getUTCMonth() + 1));
-    }
-    return a;
-  };
 
   useEffect(() => {
     if (searchParams) {
@@ -133,36 +126,15 @@ function CoinPage() {
 
   const handleChange = async (event) => {
     setDays(event.target.value);
-    const API_URL2 = `https://api.coingecko.com/api/v3/coins/${data.id}/market_chart?vs_currency=usd&days=${event.target.value}&interval=daily`;
-
-    const prices_data = await axios.get(API_URL2, {
-      crossDomain: true,
-    });
-
-    if (!prices_data) {
-      console.log("No price data");
-      return;
-    }
-
-    setPrices(prices_data.data.prices);
-
-    const priorDate_2 = new Date(
-      new Date().setDate(today.getDate() - event.target.value)
-    );
-
-    var dates_2 = getDaysArray(priorDate_2, today);
-
+    const prices_data = await getPrices(data.id, event.target.value);
+    setPrices(prices_data);
+    const priorDate = getPriorDate(event.target.value);
+    var dates = getDaysArray(priorDate, today);
     setChartData({
-      labels: dates_2,
+      labels: dates,
       datasets: [
         {
-          data: prices_data?.data?.prices?.map((data) => data[1]),
-          borderWidth: 2,
-          fill: false,
-          tension: 0.25,
-          backgroundColor: "#111",
-          borderColor: "#3a80e9",
-          pointRadius: 0,
+          data: prices_data?.map((data) => data[1]),
         },
       ],
     });
@@ -175,43 +147,15 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <div className="coin-page-div">
-            <List coin={coin} />
-          </div>
+          <CoinPageList coin={coin} />
           <div className="coin-page-div">
             <p>
               Price Change in the last
-              <span>
-                <Select
-                  value={days}
-                  label="Days"
-                  onChange={handleChange}
-                  className="select-days"
-                  sx={{
-                    height: "2.5rem",
-                    color: "var(--white)",
-                    "& .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "var(--white)",
-                    },
-                    "& .MuiSvgIcon-root": {
-                      color: "var(--white)",
-                    },
-                  }}
-                >
-                  <MenuItem value={7}>7</MenuItem>
-                  <MenuItem value={30}>30</MenuItem>
-                  <MenuItem value={60}>60</MenuItem>
-                  <MenuItem value={90}>90</MenuItem>
-                </Select>
-              </span>
-              days
+              <SelectDays days={days} handleChange={handleChange} />
             </p>
             <LineChart chartData={chartData} options={options} />
           </div>
-          <div className="coin-page-div description">
-            <h2>{data.name}</h2>
-            <p dangerouslySetInnerHTML={{ __html: data.description.en }} />
-          </div>
+          <CoinPageDesc name={data.name} desc={data.description.en} />
         </>
       )}
     </>
