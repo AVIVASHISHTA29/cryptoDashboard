@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { COIN_GECKO_URL } from "../../../constants";
 import { getDaysArray } from "../../../functions/getDaysArray";
 import LineChart from "../../DashboardComponents/LineChart";
 import Loader from "../../Loader";
@@ -56,7 +57,9 @@ function CompareGraph({ crypto1, crypto2, days }) {
   }, [crypto1, crypto2, days]);
 
   const getData = async () => {
-    const API_URL = `https://api.coingecko.com/api/v3/coins/${crypto1}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
+    const API_URL =
+      COIN_GECKO_URL +
+      `${crypto1}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
 
     const prices_data1 = await axios.get(API_URL, {
       crossDomain: true,
@@ -68,7 +71,9 @@ function CompareGraph({ crypto1, crypto2, days }) {
     }
     setPrices1(prices_data1.data.prices);
 
-    const API_URL2 = `https://api.coingecko.com/api/v3/coins/${crypto2}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
+    const API_URL2 =
+      COIN_GECKO_URL +
+      `${crypto2}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
 
     const prices_data2 = await axios.get(API_URL2, {
       crossDomain: true,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { COIN_GECKO_URL } from "../../../constants";
 import CoinPageList from "../../CoinPageComponents/CoinPageList";
 import Loader from "../../Loader";
 import "./styles.css";
@@ -13,7 +14,7 @@ function ListFlex({ crypto1, crypto2, setCrypto1Desc, setCrypto2Desc }) {
   }, [crypto1, crypto2]);
 
   const getData = async () => {
-    const API_URL = `https://api.coingecko.com/api/v3/coins/${crypto1}`;
+    const API_URL = COIN_GECKO_URL + `${crypto1}`;
 
     const crypto1_response = await axios.get(API_URL, {
       crossDomain: true,
@@ -25,7 +26,7 @@ function ListFlex({ crypto1, crypto2, setCrypto1Desc, setCrypto2Desc }) {
     }
     console.log("response 1", crypto1_response);
 
-    const API_URL2 = `https://api.coingecko.com/api/v3/coins/${crypto2}`;
+    const API_URL2 = COIN_GECKO_URL + `${crypto2}`;
 
     const crypto2_response = await axios.get(API_URL2, {
       crossDomain: true,

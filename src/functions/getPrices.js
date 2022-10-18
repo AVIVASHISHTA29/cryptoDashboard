@@ -1,7 +1,10 @@
 import axios from "axios";
+import { COIN_GECKO_URL } from "../constants";
 
 export const getPrices = async (id, days) => {
-  const API_URL = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
+  const API_URL =
+    COIN_GECKO_URL +
+    `${id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
 
   const prices_data = await axios.get(API_URL, {
     crossDomain: true,

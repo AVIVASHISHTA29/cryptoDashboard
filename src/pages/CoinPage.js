@@ -12,30 +12,18 @@ import SelectDays from "../components/CoinPageComponents/SelectDays";
 import { getDaysArray } from "../functions/getDaysArray";
 import { getPrices } from "../functions/getPrices";
 import { getPriorDate } from "../functions/getPriorDate";
+import { COIN_GECKO_URL } from "../constants";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
-  console.log(searchParams);
-
   const [data, setData] = useState();
-  const [dates, setDates] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadingChart, setLoadingChart] = useState(true);
   const [coin, setCoin] = useState({});
   const [days, setDays] = useState(30);
-
-  const options = {
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    responsive: true,
-    interaction: {
-      mode: "index",
-      intersect: false,
-    },
-  };
+  const [prices, setPrices] = useState([]);
+  const today = new Date();
+  const priorDate = new Date(new Date().setDate(today.getDate() - days));
 
   const [chartData, setChartData] = useState({
     labels: [],
@@ -52,10 +40,18 @@ function CoinPage() {
     ],
   });
 
-  const [prices, setPrices] = useState([]);
-
-  const today = new Date();
-  const priorDate = new Date(new Date().setDate(today.getDate() - days));
+  const options = {
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    responsive: true,
+    interaction: {
+      mode: "index",
+      intersect: false,
+    },
+  };
 
   useEffect(() => {
     if (searchParams) {
@@ -64,7 +60,7 @@ function CoinPage() {
   }, [searchParams]);
 
   const getData = async () => {
-    const API_URL = `https://api.coingecko.com/api/v3/coins/${searchParams}`;
+    const API_URL = COIN_GECKO_URL + `${searchParams}`;
 
     const response_data = await axios.get(API_URL.slice(0, -1), {
       crossDomain: true,
@@ -78,7 +74,9 @@ function CoinPage() {
 
     console.log("ersponse data>>>", response_data.data);
 
-    const API_URL2 = `https://api.coingecko.com/api/v3/coins/${response_data.data.id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
+    const API_URL2 =
+      COIN_GECKO_URL +
+      `${response_data.data.id}/market_chart?vs_currency=usd&days=${days}&interval=daily`;
 
     const prices_data = await axios.get(API_URL2, {
       crossDomain: true,
