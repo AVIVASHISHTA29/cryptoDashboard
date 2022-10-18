@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
-
-function List({ coin }) {
+import { motion } from "framer-motion";
+function List({ coin, delay }) {
   const [volume, setVolume] = useState(coin.total_volume);
 
   useEffect(() => {
@@ -35,7 +35,17 @@ function List({ coin }) {
 
   return (
     <a href={`/coin?${coin.id}`}>
-      <tr className="list-wrapper">
+      <motion.tr
+        className="list-wrapper"
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{
+          type: "spring",
+          duration: 0.5,
+          delay: 0.25 + delay * 0.1,
+        }}
+      >
         <td className="image-td">
           <img src={coin.image} className="list-logo" />
         </td>
@@ -90,7 +100,7 @@ function List({ coin }) {
         <td className="name2 td-text td-cap">
           ${coin.market_cap.toLocaleString()}
         </td>
-      </tr>
+      </motion.tr>
     </a>
   );
 }

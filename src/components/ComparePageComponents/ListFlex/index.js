@@ -52,7 +52,7 @@ function ListFlex({ crypto1, crypto2, setCrypto1Desc, setCrypto2Desc }) {
   ) : (
     <div>
       <CoinPageList coin={coin1} />
-      <CoinPageList coin={coin2} />
+      <CoinPageList coin={coin2} delay={2} />
     </div>
   );
 }

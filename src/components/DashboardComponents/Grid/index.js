@@ -2,12 +2,18 @@ import React from "react";
 import "./styles.css";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
-
+import { motion } from "framer-motion";
 //todo:  graphs  + pagination + add this component to the home page
 
-function Grid({ coin }) {
+function Grid({ coin, delay }) {
   return (
-    <div className="coin-box">
+    <motion.div
+      className="coin-box"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ type: "spring", duration: 1, delay: 0.25 + delay * 0.1 }}
+    >
       <a href={`/coin?${coin.id}`}>
         <div className="logo-div">
           <img src={coin.image} className="logo" />
@@ -61,7 +67,7 @@ function Grid({ coin }) {
           </p>
         </div>
       </a>
-    </div>
+    </motion.div>
   );
 }
 

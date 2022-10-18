@@ -115,9 +115,9 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <CoinPageList coin={coin} />
+          <CoinPageList coin={coin} delay={2} />
           <div className="coin-page-div">
-            <p>
+            <p style={{ margin: 0 }}>
               Price Change in the last
               <SelectDays days={days} handleChange={handleChange} />
             </p>
