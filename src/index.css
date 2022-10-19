@@ -104,6 +104,21 @@ td {
   border-color: var(--white) !important;
 }
 
+.top-button {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  border: 2px solid var(--blue);
+  border-radius: 50%;
+  color: var(--blue);
+  font-size: 2rem !important;
+  height: 3rem !important;
+  width: 3rem !important;
+  padding: 0.5rem;
+  cursor: pointer;
+  background-color: var(--darkgrey);
+}
+
 @media only screen and (max-width: 800px) {
   p {
     font-size: 80%;
@@ -120,5 +135,9 @@ td {
   }
   .select-days {
     max-width: 90px;
+  }
+  .top-button {
+    right: 1rem;
+    bottom: 1rem;
   }
 }

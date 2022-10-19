@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import Loader from "../components/Loader";
 import DashboardWrapper from "../components/DashboardComponents/DashboardWrapper";
 import Search from "../components/DashboardComponents/Search";
+import NorthRoundedIcon from "@mui/icons-material/NorthRounded";
+import IconButton from "@mui/material/IconButton";
 
 function Dashboard() {
   const API_URL =
@@ -35,6 +37,29 @@ function Dashboard() {
     });
   }, []);
 
+  let mybutton = document.getElementById("top-button");
+
+  window.onscroll = function () {
+    scrollFunction();
+  };
+
+  function scrollFunction() {
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
   return (
     <>
       {loading ? (
@@ -44,6 +69,13 @@ function Dashboard() {
           <Header />
           <Search handleChange={handleChange} />
           <DashboardWrapper data={filteredCoins} />
+          <NorthRoundedIcon
+            className="top-button"
+            id="top-button"
+            onClick={() => {
+              topFunction();
+            }}
+          />
         </>
       )}
     </>
