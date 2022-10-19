@@ -13,4 +13,4 @@ export default Footer;
 //todo :grid and list hover animation
 //todo:news api for crypto prod
 //todo:Light mode dark mode.
-//todo:Pagination + add this component to the home page.
+//todo:Pagination Button + add this component to the home page.

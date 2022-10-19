@@ -4,6 +4,13 @@
   align-items: center;
   width: 100%;
   gap: 1rem;
+  padding: 0rem 1rem;
+}
+
+.list-wrapper:hover {
+  background-color: var(--darkgrey);
+  border-radius: 1rem;
+  transition: all 0.3s;
 }
 
 .list-logo {
@@ -45,6 +52,10 @@
 }
 
 @media only screen and (max-width: 800px) {
+  .list-wrapper {
+    padding: 0rem 1rem;
+  }
+
   .list-logo {
     width: 30px !important;
   }

@@ -11,6 +11,31 @@
   cursor: pointer;
 }
 
+.coin-box:hover {
+  border: 2px solid var(--green) !important;
+  transform: scale(1.02) !important;
+  transition: all 0.3s;
+}
+
+.box-red {
+  background-color: var(--darkgrey);
+  width: 300px;
+  height: 300px;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.box-red:hover {
+  transform: scale(1.02) !important;
+  border: 2px solid var(--red);
+  transition: all 0.3s;
+}
+
 .logo-div {
   display: flex;
   width: 100%;
