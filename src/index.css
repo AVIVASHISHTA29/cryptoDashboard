@@ -119,7 +119,20 @@ td {
   background-color: var(--darkgrey);
 }
 
+.toggle-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0rem;
+}
+
 @media only screen and (max-width: 800px) {
+  .toggle-flex {
+    justify-content: flex-start;
+    margin: 1rem 0rem;
+  }
+
   p {
     font-size: 80%;
   }

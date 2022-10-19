@@ -11,6 +11,7 @@ import { getDaysArray } from "../functions/getDaysArray";
 import { getPrices } from "../functions/getPrices";
 import { getPriorDate } from "../functions/getPriorDate";
 import { getCoinData } from "../functions/getCoinData";
+import ColorToggleButton from "../components/CoinPageComponents/Toggle";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
@@ -20,6 +21,7 @@ function CoinPage() {
   const [coin, setCoin] = useState({});
   const [days, setDays] = useState(30);
   const [prices, setPrices] = useState([]);
+  const [type, setType] = useState("prices");
   const today = new Date();
   const priorDate = new Date(new Date().setDate(today.getDate() - days));
 
@@ -121,6 +123,16 @@ function CoinPage() {
               Price Change in the last
               <SelectDays days={days} handleChange={handleChange} />
             </p>
+            <div className="toggle-flex">
+              <ColorToggleButton
+                type={type}
+                setType={setType}
+                days={days}
+                chartData={chartData}
+                setChartData={setChartData}
+                id={data.id}
+              />
+            </div>
             <LineChart chartData={chartData} options={options} />
           </div>
           <CoinPageDesc name={data.name} desc={data.description.en} />
