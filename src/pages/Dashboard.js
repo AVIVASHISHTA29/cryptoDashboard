@@ -6,6 +6,7 @@ import DashboardWrapper from "../components/DashboardComponents/DashboardWrapper
 import Search from "../components/DashboardComponents/Search";
 import NorthRoundedIcon from "@mui/icons-material/NorthRounded";
 import IconButton from "@mui/material/IconButton";
+import PaginationComponent from "../components/DashboardComponents/PaginationComponent";
 
 function Dashboard() {
   const API_URL =
@@ -14,15 +15,32 @@ function Dashboard() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [filteredCoins, setFilteredCoins] = useState([]);
 
-  const filteredCoins = data?.filter(
-    (coin) =>
-      coin.name.toLowerCase().includes(search.toLowerCase()) ||
-      coin.symbol.toLowerCase().includes(search.toLowerCase())
-  );
+  useEffect(() => {
+    if (search) {
+      setFilteredCoins(
+        data?.filter(
+          (coin) =>
+            coin.name.toLowerCase().includes(search.toLowerCase()) ||
+            coin.symbol.toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredCoins(data.slice((page - 1) * 10, (page - 1) * 10 + 10));
+    }
+  }, [search]);
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+  };
+
+  const handlePageChange = (e, value) => {
+    setPage(value);
+    console.log("valueee", value);
+    setFilteredCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
+    console.log("filteredCoins", filteredCoins);
   };
 
   useEffect(() => {
@@ -30,6 +48,9 @@ function Dashboard() {
       if (response.data) {
         console.log(response.data);
         setData(response.data);
+        setFilteredCoins(
+          response.data.slice((page - 1) * 10, (page - 1) * 10 + 10)
+        );
         setLoading(false);
       } else {
         console.log("error");
@@ -69,6 +90,12 @@ function Dashboard() {
           <Header />
           <Search handleChange={handleChange} />
           <DashboardWrapper data={filteredCoins} />
+          {!search && (
+            <PaginationComponent
+              page={page}
+              handlePageChange={handlePageChange}
+            />
+          )}
           <NorthRoundedIcon
             className="top-button"
             id="top-button"
