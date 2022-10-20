@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { COIN_GECKO_URL } from "../../../constants";
+import { convertNumbers } from "../../../functions/convertNumbers";
 import { getDaysArray } from "../../../functions/getDaysArray";
 import { getPrices } from "../../../functions/getPrices";
 import ColorToggleButton from "../../CoinPageComponents/Toggle";
@@ -37,6 +38,24 @@ function CompareGraph({ crypto1, crypto2, days, type, setType }) {
         type: "linear",
         display: true,
         position: "left",
+        ticks:
+          type == "market_caps"
+            ? {
+                callback: function (value) {
+                  return "$" + convertNumbers(value);
+                },
+              }
+            : type == "total_volumes"
+            ? {
+                callback: function (value) {
+                  return convertNumbers(value);
+                },
+              }
+            : {
+                callback: function (value, index, ticks) {
+                  return "$" + value.toLocaleString();
+                },
+              },
       },
       y1: {
         type: "linear",
@@ -45,6 +64,24 @@ function CompareGraph({ crypto1, crypto2, days, type, setType }) {
         grid: {
           drawOnChartArea: false,
         },
+        ticks:
+          type == "market_caps"
+            ? {
+                callback: function (value) {
+                  return "$" + convertNumbers(value);
+                },
+              }
+            : type == "total_volumes"
+            ? {
+                callback: function (value) {
+                  return convertNumbers(value);
+                },
+              }
+            : {
+                callback: function (value, index, ticks) {
+                  return "$" + value.toLocaleString();
+                },
+              },
       },
     },
   };

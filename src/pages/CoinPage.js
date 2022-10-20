@@ -12,6 +12,7 @@ import { getPrices } from "../functions/getPrices";
 import { getPriorDate } from "../functions/getPriorDate";
 import { getCoinData } from "../functions/getCoinData";
 import ColorToggleButton from "../components/CoinPageComponents/Toggle";
+import { convertNumbers } from "../functions/convertNumbers";
 
 function CoinPage() {
   const [searchParams] = useSearchParams();
@@ -50,6 +51,28 @@ function CoinPage() {
     interaction: {
       mode: "index",
       intersect: false,
+    },
+    scales: {
+      y: {
+        ticks:
+          type == "market_caps"
+            ? {
+                callback: function (value) {
+                  return "$" + convertNumbers(value);
+                },
+              }
+            : type == "total_volumes"
+            ? {
+                callback: function (value) {
+                  return convertNumbers(value);
+                },
+              }
+            : {
+                callback: function (value, index, ticks) {
+                  return "$" + value.toLocaleString();
+                },
+              },
+      },
     },
   };
 
