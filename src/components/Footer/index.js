@@ -6,6 +6,7 @@ function Footer() {
 
 export default Footer;
 
+//todo: fix the functionality of types,
 //todo:Add footer to every page.
 //todo:Mouse follower.
 //todo:Home Page more components.
