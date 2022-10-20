@@ -4,36 +4,22 @@ import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import Tooltip from "@mui/material/Tooltip";
 import { motion } from "framer-motion";
 import "./styles.css";
+import { convertNumbers } from "../../../functions/convertNumbers";
 
 function List({ coin, delay }) {
   const [volume, setVolume] = useState(coin.total_volume);
 
   useEffect(() => {
-    if (volume) {
-      if (volume >= 1000 && volume < 1000000) {
-        setVolume(
-          volume.toString().slice(0, -3) +
-            "." +
-            volume.toString().slice(-3, -1) +
-            "K"
-        );
-      } else if (volume >= 1000000 && volume < 1000000000) {
-        setVolume(
-          volume.toString().slice(0, -6) +
-            "." +
-            volume.toString().slice(-6, -4) +
-            "M"
-        );
-      } else if (volume >= 1000000000) {
-        setVolume(
-          volume.toString().slice(0, -9) +
-            "." +
-            volume.toString().slice(-9, -7) +
-            "B"
-        );
-      }
+    if (
+      volume &&
+      (!volume.toString().includes("B") ||
+        !volume.toString().includes("M") ||
+        !volume.toString().includes("K"))
+    ) {
+      setVolume(convertNumbers(volume));
+      console.log("convertedd Volume>>>>", convertNumbers(volume));
     }
-  }, [volume]);
+  }, []);
 
   return (
     <a href={`/coin?${coin.id}`}>
