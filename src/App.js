@@ -19,11 +19,28 @@ function App() {
         (cursor.style.top = e.clientY + "px")
       );
     });
+
     cursorPointer = document.getElementById("cursor-pointer");
     document.body.addEventListener("mousemove", function (e) {
       return (
         (cursorPointer.style.left = e.clientX + "px"),
         (cursorPointer.style.top = e.clientY + "px")
+      );
+    });
+    document.body.addEventListener("mousedown", function (e) {
+      return (
+        (cursor.style.height = "0.5rem"),
+        (cursor.style.width = "0.5rem"),
+        (cursorPointer.style.height = "2.5rem"),
+        (cursorPointer.style.width = "2.5rem")
+      );
+    });
+    document.body.addEventListener("mouseup", function (e) {
+      return (
+        (cursor.style.height = "0.3rem"),
+        (cursor.style.width = "0.3rem"),
+        (cursorPointer.style.height = "2rem"),
+        (cursorPointer.style.width = "2rem")
       );
     });
   }, []);

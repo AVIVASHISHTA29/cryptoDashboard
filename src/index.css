@@ -127,6 +127,36 @@ td {
   margin: 2rem 0rem;
 }
 
+.cursor {
+  position: fixed;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  left: -100px;
+  top: 50%;
+  background-color: var(--blue);
+  z-index: 10000;
+  border: 2px solid var(--blue);
+  height: 0.3rem;
+  width: 0.3rem;
+  transition: all 50ms ease-out;
+}
+
+.cursor-pointer {
+  position: fixed;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  left: -100px;
+  top: 50%;
+  background-color: transparent;
+  z-index: 10000;
+  border: 2px solid var(--blue);
+  height: 2rem;
+  width: 2rem;
+  transition: all 350ms ease-out;
+}
+
 @media only screen and (max-width: 800px) {
   .toggle-flex {
     justify-content: flex-start;
@@ -152,5 +182,10 @@ td {
   .top-button {
     right: 1rem;
     bottom: 1rem;
+  }
+
+  .cursor,
+  .cursor-pointer {
+    display: none;
   }
 }
