@@ -12,6 +12,7 @@ export default function ColorToggleButton({
   chartData,
   setChartData,
   id,
+  id2,
 }) {
   const today = new Date();
   const [isMobile, setIsMobile] = React.useState(false);
@@ -20,15 +21,48 @@ export default function ColorToggleButton({
     setType(newType);
     const priorDate = getPriorDate(days);
     var dates = getDaysArray(priorDate, today);
-    const prices_data = await getPrices(id, days, newType);
-    setChartData({
-      labels: dates,
-      datasets: [
-        {
-          data: prices_data?.map((data) => data[1]),
-        },
-      ],
-    });
+    if (id2) {
+      const prices_data1 = await getPrices(id, days, newType);
+      const prices_data2 = await getPrices(id2, days, newType);
+
+      setChartData({
+        labels: dates,
+        datasets: [
+          {
+            label: id,
+            data: prices_data1?.map((data) => data[1]),
+            borderWidth: 2,
+            fill: false,
+            tension: 0.25,
+            backgroundColor: "#111",
+            borderColor: "#3a80e9",
+            pointRadius: 0,
+            yAxisID: "y",
+          },
+          {
+            label: id2,
+            data: prices_data2?.map((data) => data[1]),
+            borderWidth: 2,
+            fill: false,
+            tension: 0.25,
+            backgroundColor: "#111",
+            borderColor: "#61c96f",
+            pointRadius: 0,
+            yAxisID: "y1",
+          },
+        ],
+      });
+    } else {
+      const prices_data = await getPrices(id, days, newType);
+      setChartData({
+        labels: dates,
+        datasets: [
+          {
+            data: prices_data?.map((data) => data[1]),
+          },
+        ],
+      });
+    }
   };
 
   const sx = { fontSize: "0.7rem", padding: "0.5rem" };

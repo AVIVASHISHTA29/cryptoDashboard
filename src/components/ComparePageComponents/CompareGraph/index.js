@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { COIN_GECKO_URL } from "../../../constants";
 import { getDaysArray } from "../../../functions/getDaysArray";
 import { getPrices } from "../../../functions/getPrices";
+import ColorToggleButton from "../../CoinPageComponents/Toggle";
 import LineChart from "../../DashboardComponents/LineChart";
 import Loader from "../../Loader";
 import "./styles.css";
-function CompareGraph({ crypto1, crypto2, days }) {
+function CompareGraph({ crypto1, crypto2, days, type, setType }) {
   const [prices1, setPrices1] = useState([]);
   const [prices2, setPrices2] = useState([]);
 
@@ -58,9 +59,9 @@ function CompareGraph({ crypto1, crypto2, days }) {
   }, [crypto1, crypto2, days]);
 
   const getData = async () => {
-    const prices_data1 = await getPrices(crypto1, days);
+    const prices_data1 = await getPrices(crypto1, days, type);
     setPrices1(prices_data1);
-    const prices_data2 = await getPrices(crypto2, days);
+    const prices_data2 = await getPrices(crypto2, days, type);
     setPrices2(prices_data2);
     var dates = getDaysArray(priorDate, today);
     setChartData({
@@ -93,6 +94,17 @@ function CompareGraph({ crypto1, crypto2, days }) {
   };
   return (
     <div className="coin-page-div">
+      <div className="toggle-flex">
+        <ColorToggleButton
+          type={type}
+          setType={setType}
+          days={days}
+          chartData={chartData}
+          setChartData={setChartData}
+          id={crypto1}
+          id2={crypto2}
+        />
+      </div>
       <LineChart chartData={chartData} options={options} />
     </div>
   );
