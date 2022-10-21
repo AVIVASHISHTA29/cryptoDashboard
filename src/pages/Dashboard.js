@@ -41,6 +41,7 @@ function Dashboard() {
     console.log("valueee", value);
     setFilteredCoins(data.slice((value - 1) * 10, (value - 1) * 10 + 10));
     console.log("filteredCoins", filteredCoins);
+    topFunction();
   };
 
   useEffect(() => {

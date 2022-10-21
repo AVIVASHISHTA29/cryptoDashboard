@@ -104,8 +104,10 @@
   .gradient {
     top: 6rem;
     min-width: 200px;
+    max-width: 300px;
     margin-top: 0rem;
     padding-bottom: 3rem;
+    max-height: 500px;
   }
 
   .button-div {
@@ -116,5 +118,8 @@
 
   .big-heading {
     font-size: 3.5rem;
+  }
+  .phone {
+    max-width: 300px;
   }
 }
