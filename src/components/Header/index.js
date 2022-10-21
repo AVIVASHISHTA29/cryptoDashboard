@@ -1,9 +1,47 @@
 import Drawer from "./Drawer";
-import React from "react";
+import React, { useState } from "react";
 import Button from "../Button";
 import "./styles.css";
+import { Switch } from "@mui/material";
 
 function Header() {
+  const setDark = () => {
+    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", "dark");
+  };
+
+  const setLight = () => {
+    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", "light");
+  };
+
+  const storedTheme = localStorage.getItem("theme");
+
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const defaultDark =
+    storedTheme === "dark" || (storedTheme === null && prefersDark);
+
+  const [darkTheme, setDarkTheme] = useState(
+    defaultDark == "dark" ? true : false
+  );
+
+  if (defaultDark) {
+    setDark();
+  }
+
+  const toggleTheme = (e) => {
+    if (darkTheme) {
+      setDark();
+      setDarkTheme(false);
+    } else {
+      setLight();
+      setDarkTheme(true);
+    }
+  };
+
   return (
     <div className="navbar">
       <a href="/">
@@ -12,6 +50,11 @@ function Header() {
         </h1>
       </a>
       <div className="links-flex">
+        <Switch
+          defaultChecked
+          value={!darkTheme}
+          onClick={() => toggleTheme()}
+        />
         <a href="/">
           <p className="links">Home</p>
         </a>

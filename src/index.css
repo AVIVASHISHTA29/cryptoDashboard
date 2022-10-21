@@ -10,6 +10,18 @@
   --red: #f94141;
 }
 
+[data-theme="light"] {
+  --white: #111;
+  --black: #fff;
+  --darkgrey: #f6f6f6;
+}
+
+[data-theme="dark"] {
+  --white: #fff;
+  --black: #000;
+  --darkgrey: #1b1b1b;
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
