@@ -24,6 +24,5 @@ export default Footer;
 
 //todo:seo
 //todo:Add footer to every page + responsive.
-//todo:Light mode dark mode.
 //todo:Home Page more components.
 //todo:news api for crypto prod
