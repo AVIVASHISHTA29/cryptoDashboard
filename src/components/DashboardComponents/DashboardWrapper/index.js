@@ -11,7 +11,7 @@ function DashboardWrapper({ data }) {
   const [value, setValue] = React.useState(0);
 
   const style = {
-    color: "white",
+    color: "var(--white)",
     width: "50vw",
     fontSize: "1.2rem",
     fontWeight: 600,

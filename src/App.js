@@ -44,9 +44,21 @@ function App() {
   //     );
   //   });
   // }, []);
+  const setInitialTheme = `
+  function getUserPreference() {
+    if(window.localStorage.getItem('theme')) {
+      return window.localStorage.getItem('theme')
+    }
+    return window.matchMedia('(prefers-color-scheme: light)').matches 
+      ? 'light' 
+      : 'dark'
+  }
+  document.body.dataset.theme = getUserPreference();
+`;
 
   return (
     <>
+      <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />;
       <div className="cursor" id="cursor"></div>
       <div className="cursor-pointer" id="cursor-pointer"></div>
       <BrowserRouter>

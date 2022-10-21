@@ -11,8 +11,8 @@ function PaginationComponent({ page, handlePageChange }) {
         sx={{
           color: "#fff",
           "& .Mui-selected , .Mui-selected:hover": {
-            backgroundColor: "var(--blue)",
-            color: "#fff",
+            backgroundColor: "var(--blue) !important",
+            color: "#fff !important",
             borderColor: "var(--blue) !important",
           },
 

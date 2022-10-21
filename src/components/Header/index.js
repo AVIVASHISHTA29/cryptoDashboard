@@ -33,13 +33,12 @@ function Header() {
   }
 
   const toggleTheme = (e) => {
-    if (darkTheme) {
+    if (!darkTheme) {
       setDark();
-      setDarkTheme(false);
     } else {
       setLight();
-      setDarkTheme(true);
     }
+    setDarkTheme(!darkTheme);
   };
 
   return (

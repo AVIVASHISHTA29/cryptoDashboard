@@ -11,17 +11,18 @@
 }
 
 [data-theme="light"] {
-  --white: #111;
-  --black: #fff;
-  --darkgrey: #f6f6f6;
-}
-
-[data-theme="dark"] {
-  --white: #fff;
-  --black: #000;
+  --white: #ffffff;
+  --black: #111;
+  --grey: #888;
   --darkgrey: #1b1b1b;
 }
 
+[data-theme="dark"] {
+  --white: #111;
+  --black: #fff;
+  --grey: #888;
+  --darkgrey: #f3f3f3;
+}
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;

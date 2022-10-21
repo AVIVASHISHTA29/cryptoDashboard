@@ -5,7 +5,7 @@ function Search({ handleChange }) {
   return (
     <div className="search-wrapper">
       <div className="search-input">
-        <SearchRoundedIcon />
+        <SearchRoundedIcon sx={{ color: "var(--grey)" }} />
         <input type="text" placeholder="Search" onChange={handleChange} />
       </div>
     </div>
