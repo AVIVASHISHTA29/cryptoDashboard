@@ -103,7 +103,6 @@ function CoinPage() {
       ],
     });
     setLoadingChart(false);
-    setLoading(false);
     setCoin({
       id: response_data.id,
       name: response_data.name,
@@ -115,6 +114,7 @@ function CoinPage() {
       current_price: response_data.market_data.current_price.usd,
       market_cap: response_data.market_data.market_cap.usd,
     });
+    setLoading(false);
   };
 
   const handleChange = async (event) => {
@@ -140,7 +140,8 @@ function CoinPage() {
       ) : (
         <>
           <Header />
-          <CoinPageList coin={coin} delay={2} />
+          {coin.id && <CoinPageList coin={coin} delay={2} />}
+
           <div className="coin-page-div">
             <p style={{ margin: 0 }}>
               Price Change in the last
