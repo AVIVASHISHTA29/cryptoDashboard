@@ -4,13 +4,8 @@ import Button from "../Button";
 import "./styles.css";
 
 function Header() {
-  const [darkTheme, setDarkTheme] = useState(true);
-  // 1
   const setDark = () => {
-    // 2
     localStorage.setItem("theme", "dark");
-
-    // 3
     document.documentElement.setAttribute("data-theme", "dark");
   };
 
@@ -19,7 +14,6 @@ function Header() {
     document.documentElement.setAttribute("data-theme", "light");
   };
 
-  // 4
   const storedTheme = localStorage.getItem("theme");
 
   const prefersDark =
@@ -29,13 +23,16 @@ function Header() {
   const defaultDark =
     storedTheme === "dark" || (storedTheme === null && prefersDark);
 
+  const [darkTheme, setDarkTheme] = useState(
+    defaultDark == "dark" ? true : false
+  );
+
   if (defaultDark) {
     setDark();
   }
 
-  // 5
   const toggleTheme = (e) => {
-    if (darkTheme) {
+    if (!darkTheme) {
       setDark();
     } else {
       setLight();
@@ -65,7 +62,7 @@ function Header() {
             <Button text="Dashboard" />
           </p>
         </a>
-        <p onClick={() => toggleTheme()}>Dark</p>
+        <p onClick={() => toggleTheme()}>{darkTheme ? "Dark" : "Light"}</p>
       </div>
       <div className="menu-div">
         <Drawer />

@@ -8,6 +8,7 @@
   --darkgrey: #1b1b1b;
   --green: #61c96f;
   --red: #f94141;
+  --white-button: #ffffff;
 }
 
 [data-theme="light"] {
@@ -22,10 +23,6 @@
   --black: #fff;
   --grey: #888;
   --darkgrey: #f3f3f3;
-}
-
-.white-content {
-  background: #e4e4e4;
 }
 
 html {
