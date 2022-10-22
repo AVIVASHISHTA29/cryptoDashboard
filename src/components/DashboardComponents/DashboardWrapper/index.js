@@ -26,7 +26,6 @@ function DashboardWrapper({ data }) {
   const theme = createTheme({
     palette: {
       primary: {
-        // Purple and green play nicely together.
         main: "#3a80e9",
       },
     },
@@ -51,7 +50,7 @@ function DashboardWrapper({ data }) {
                 <p>No Crypto Currencies Found</p>
               ) : (
                 data.map((coin, i) => (
-                  <Grid coin={coin} key={i} delay={(i + 4) % 4} />
+                  <Grid coin={coin} key={i} delay={(i + 5) % 5} />
                 ))
               )}
             </div>
@@ -62,7 +61,7 @@ function DashboardWrapper({ data }) {
                 <p>No Crypto Currencies Found</p>
               ) : (
                 data.map((coin, i) => (
-                  <List coin={coin} key={i} delay={(i + 7) % 7} />
+                  <List coin={coin} key={i} delay={(i + 8) % 8} />
                 ))
               )}
             </table>
