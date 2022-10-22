@@ -3,7 +3,10 @@ import "./styles.css";
 import Pagination from "@mui/material/Pagination";
 function PaginationComponent({ page, handlePageChange }) {
   return (
-    <div style={{ display: "flex", justifyContent: "center", margin: "2rem" }}>
+    <div
+      className="pagination-div"
+      style={{ display: "flex", justifyContent: "center", margin: "2rem" }}
+    >
       <Pagination
         count={10}
         page={page}

@@ -53,7 +53,7 @@
 
 @media only screen and (max-width: 800px) {
   .list-wrapper {
-    padding: 0rem 1rem;
+    padding: 0rem 0rem;
   }
 
   .list-logo {
@@ -84,7 +84,7 @@
   }
   .td-chips {
     font-size: 50%;
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.25rem;
     margin: 1rem 0rem;
     border-width: 1px;
   }

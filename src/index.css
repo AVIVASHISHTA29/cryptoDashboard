@@ -202,4 +202,9 @@ td {
   .cursor-pointer {
     display: none;
   }
+
+  .pagination-div {
+    margin: 1rem 0.5rem !important;
+    margin-bottom: 2rem !important;
+  }
 }

@@ -7,7 +7,7 @@ function Home() {
     <div style={{ minHeight: "100vh" }}>
       <Header />
       <LandingComponent />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
